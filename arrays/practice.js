@@ -18,7 +18,9 @@ var arr = [10,20,30];
 */
 
 //Code Here
-
+function first(arr){
+  return arr[0];
+}
 
 
 ////////// PROBLEM 2 //////////
@@ -33,7 +35,9 @@ var arr = [40,50,60];
 */
 
 //Code Here
-
+function last(arr){
+  return arr.pop()
+}
 
 
 ////////// PROBLEM 3 //////////
@@ -48,7 +52,11 @@ var family = ['Tyler', 'Jordyn', 'Ryan', 'Chelsey', 'Ireland'];
 */
 
 //Code Here
-
+function looper(family){
+  for (let i = 0; i < family.length; i++ ) {
+     alert(family[i],(i));
+  }
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -63,7 +71,11 @@ var letters = ['A', 'B', 'C', 'D', 'E'];
 */
 
 //Code Here
-
+function reversedLooper(letters) {
+  for (let i = letters.length -1; i >=0; i--) {
+      alert(letters[i]);
+  }
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -78,6 +90,21 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
 */
 
 //Code Here
+function evenFinder(nums) {
+  
+  let even = []
+    for (let i = 0; i < nums.length; i++){
+      if (nums[i] % 2 === 0){
+        even.push(nums[i])
+      }
+  }
+  return even;
+}
+evenFinder(nums);
+
+
+
+
 
 
 
@@ -107,8 +134,20 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
 */
 
 //Code Here
-
-
+function divider(numbersArray) {
+  let even = []
+  let odd = []
+    for (let i = 0; i < numbersArray.length; i++){
+      if (numbersArray[i] % 2 === 0){
+        even.push(numbersArray[i])
+      } else {
+        odd.push(numbersArray[i])
+      }
+  }
+  return [even,odd];
+}
+// divider(numbersArray);
+ 
 
 ////////// PROBLEM 7 //////////
 
@@ -122,14 +161,24 @@ var getRandomArbitrary = function() {
   var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
   Above you're given a function (getRandomArbitrary) that will return a random number between 0 and 30.
   There is also a commented out array full of numbers to help you visualize what your function will be receiving.
+  
   Write a function named finder that will take in an array as an argument.
   In the function create a variable called randomNumber and set it to the invocation of getRandomArbitrary.
+
   Loop through the array to see if randomNumber is in the array. 
   If it is, return true, if it's not, return false
 */
 
-//Code Here
-
+//Code Here // NM - I've spent hours on this trying to get it to pass. I cannot
+function finder(arr) {
+  let randomNumber = getRandomArbitrary();
+    for (let i = 0; i < arr.length; i++){
+      if (arr[i] === randomNumber) {
+          return true;
+      } 
+  }
+  return false;
+}
 
 
 ////////// PROBLEM 8 //////////
@@ -142,12 +191,14 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   Here we're going to write a function that mimics going shopping and checking things off of our grocery list and adding new items to our list.
 
   Write a function called removeItem that is given two arguments, the first is myGroceryList, and the second is an item to remove from myGroceryList. 
-  If the second argument (or the item to add or remove) matches an item in myGroceryList, remove that item from the your grocery list and return the new, updated grocery list.
+  *If the second argument (or the item to add or remove) matches an item in myGroceryList, remove that item from the your grocery list and return the new, updated grocery list.
 
   Once you do that, write another function called addItem that is given two arguments, the first is myGroceryList and the second is an item to add to your grocery list. 
+  
   In addItem add the item you passed in to myGroceryList then return the new, updated grocery list.
 
-  In both removeItem and addItem check to see if the 'myGroceryList' and 'item' arguments are truthy.
+  In both removeItem and addItem check to see if the 
+  'myGroceryList' and 'item' arguments are truthy.
   If they are not, return an empty array.
 
   Here are some examples of calling your functions and what should be returned:
@@ -158,6 +209,29 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
 //Code Here
+function removeItem(list, itemRemove) {
+  if (list && itemRemove) {
+    for (let i = 0; i < list.length; i++){
+      if (list[i]  === itemRemove){ 
+        list.splice(i,1)
+        return list
+      } 
+    }  
+    return list
+  } else {
+    return [];
+  }
+};
+
+function addItem(list, itemAdd) {
+  if (list && itemAdd) {
+     list.push(itemAdd)  
+     return list
+  } else {
+    return [];
+  }
+};
+addItem()
 
 
 
@@ -168,7 +242,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
 //Code Here
-
+function maker() {
+  numsArr = []
+  for (var i = 1; i <= 215; i++) {
+    numsArr.push(i)
+  }
+  return numsArr
+};
 
 
 ////////// PROBLEM 10 //////////
@@ -184,6 +264,17 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 */
   
 //Code Here
+function addTen (numbers) {
+  let newArr= []
+    for (let i = 0; i < numbers.length; i++) {
+      //numbers[i] = parseInt(numbers[i]) + 10
+      newArr.push(parseInt(numbers[i]) + 10);
+  }
+  return newArr
+  //return numbers
+}
+addTen(numbers);
+
 
 
 
@@ -210,7 +301,13 @@ for(var i = 0; i < num2; i++){
 
 //Code Here
 
-
+function longer(arr1,arr2) {
+  if (arr1.length < arr2.length) {
+    return arr2
+  } else {
+  return arr1
+  }
+}
 
 /*
   As a continuation of the previous problem, write another function called 'both'.
@@ -221,7 +318,15 @@ for(var i = 0; i < num2; i++){
 */
 
 //Code Here
-
+  function both(arr1,arr2) {
+    var matching = [];
+    for ( var i = 0; i < arr1.length; i++ ) {
+        for ( var j = 0; j < arr2.length; j++ ) {
+            if ( arr1[i] === arr2[j] ) matching.push( arr1[i] );
+        }
+    }
+    return matching;
+}
 
 
 ////////// PROBLEM 12 //////////
@@ -262,7 +367,16 @@ var colt = {
 */
 
 //Code Here
-
+var devPeeps = ['joe', 'cahlan', 'ryan', 'colt']
+function enterDevMtnUsers(devPeeps){
+ 
+  for (let i = 0; i < devPeeps.length; i++) {
+    devMountainEmployees.push(devPeeps[i])
+  }
+  return devMountainEmployees
+};
+enterDevMtnUsers(devPeeps)
+console.log(devMountainEmployees.length)
 
 
 /*
@@ -271,7 +385,17 @@ var colt = {
 */
 
 //Code Here
-
+function removeDevUser(devMountainEmployees) {
+  let removed = []
+  for (let i = 0; i < devMountainEmployees.length; i++) {
+    if ( devMountainEmployees[i] === 'cahlan' ) {
+      devMountainEmployees.splice(i,1)
+    } 
+  }
+  return devMountainEmployees
+}
+whoRemove = removeDevUser(devMountainEmployees,devPeeps)
+console.log(whoRemove)
 
 
 ////////// PROBLEM 13 //////////
@@ -283,7 +407,7 @@ var colt = {
 */
 
 //Code Here
-
+let users = []
 
 
 /*
@@ -304,8 +428,28 @@ var user1 = {
 // Do not edit the code above.
 
 //Code Here
+var user2 = {
+  name: 'Jake Smit',
+  email: 'Jake@devmounta.in',
+  password: 'Jakeohey',
+  username: 'jakethesnake'
+};
 
+var user3 = {
+  name: 'Matt Meever',
+  email: 'mattr@devmounta.in',
+  password: 'happyDay',
+  username: 'MattBoss'
+};
 
+var user4 = {
+  name: 'Flying Monkey',
+  email: 'monkey.man@devmounta.in',
+  password: 'crash8',
+  username: 'meMonkey'
+};
+
+users.push(user1, user2, user3, user4);
 
 /*
   Now you have a very common data structure. 
@@ -319,8 +463,13 @@ var user1 = {
 
 //Code Here
 
+  for (let i = 0; i < users.length; i++) {
+    if ( users[i].email === 'mark.mciver@devmounta.in' ) {
+      users.splice(i,1)
+    } 
+  }
 
-
+  console.log(users);
 /*
   The activity we just did is very much how data works in 'the real world'.
 */

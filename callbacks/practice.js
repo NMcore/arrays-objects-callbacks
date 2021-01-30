@@ -28,6 +28,9 @@
 */
 
 // Code Here 
+function first(arr,cbFunc){
+  cbFunc(arr[0]);
+}
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -48,6 +51,11 @@ first(names, function(firstName){
 */
 
 //Code Here
+function last(arr,cbFunc){
+  cbFunc(arr.slice(-1)[0]);
+}
+
+
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -66,6 +74,9 @@ last(names, function(lastName){
 */
 
 //Code Here
+function multiply(num, num1,cbFunc){
+  cbFunc(num * num1);
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -85,6 +96,14 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+function contains(arr, name, cbFunc){
+  if (arr.includes(name)) {
+    cbFunc(true);
+  } else {
+    cbFunc(false);
+  };
+}
+
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -105,7 +124,14 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
+// REDO with ( two for loops, and IF statement and splice )
+// OR
+// Look into ...new Set that you used and understand it
+
 //Code Here
+function uniq(arr, cbFunc){
+  return cbFunc([...new Set(arr)])
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -123,6 +149,12 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
+function each(arr, cbFunc){
+  for (var i = 0; i < arr.length; i++) {
+    cbFunc(arr[i],(i))
+
+  };
+}
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -140,6 +172,13 @@ each(names, function(item, indice){
 */
 
 // Code here
+function getUserById(arr, ident, cbFunc){
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].id === ident){
+      return cbFunc(arr[i]);
+    }
+  }
+};
 
 // Do not edit the code below.
 var users = [
